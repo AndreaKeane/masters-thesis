@@ -1,0 +1,88 @@
+\documentclass[twoside,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[version=4]{mhchem} 
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+
+% Formatting of Figures
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{chemfig}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\graphicspath{ {Figures/} }
+\usepackage{wrapfig}
+\usepackage{placeins}
+\usepackage[capposition=top]{floatrow}
+\usepackage{color}
+
+% Bibliography
+\usepackage[english]{babel}
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{ref.bib}
+
+% ANN Figure
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata, shapes, positioning}
+
+% Formatting
+\usepackage{setspace}
+\doublespacing
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\assignpagestyle{\chapter}{fancy}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt} % remove lines as well
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+
+\begin{document}
+
+\frontmatter
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter{Abstract}
+Statistical data mining techniques, such as artificial neural networks (ANN), serve to address limitations of the current catalyst development and optimization approaches. Data mining techniques in conjunction with large catalytic data sets, should be able to assist in identifying meaningful materials descriptors, trends in catalytic reactivity and mechanistic differences between catalysts. This work explores the application of ANNs as sophisticated tools for identifying scaling relations using experimental low-temperature water-gas shift reaction data. We found that the ANN developed was capable of predicting catalytic activity for catalysts within the identified domain. Additionally, the ANN developed assisted in identifying catalysts which were not consistent with the ANN-optimized scaling relations.
+
+
+\chapter{Acknowledgments}
+I would like to take this opportunity to acknowledge those who have supported me through this scientific journey.\\
+Prof. Dumesic and Prof. Huber, for providing the opportunity to work on this project, as well as intellectual and intuitive insight along the way.\\
+WARF 2020 for financially supporting this project. \\
+The educators and mentors who played a fundamental role in preparing me for a STEM career. Mrs. Jill Locke, who taught graphing using baby bunnies and never batted an eye at the many snakes and lizards I brought to her classroom. Dr. Susie Knetter for demonstrating how to wear the many hats of a successful scientist-friend-wife-mother. Prof. Detamore for introducing me to academic research and guiding me through the graduate school admission process. \\
+The fellow scientists and friends who have been by my side for the past 18 months.\\
+My parents, Paula \& Jeff Livingston, for being excellent role models and continually supporting my ambitious attitude and academic growth. From letting me be a turtle-catching, squirrel-raising little girl to driving me across town to participate in the IB Program to demonstrating curiosity and perseverance each day, they have contributed immeasurably to my successes. \\
+My husband, Gehrig Keane, for always believing in me. 
+
+
+\mainmatter
+
+\include{Chapters/Introduction}
+\include{Chapters/Experimental}
+\include{Chapters/Results}
+\include{Chapters/Discussion}
+
+\appendix
+% \include{Chapters/App_Vocab}
+\include{Chapters/App_SupportProperties}
+\include{Chapters/App_PromoterProperties}
+
+\printbibliography
+
+\end{document}
+
+
+

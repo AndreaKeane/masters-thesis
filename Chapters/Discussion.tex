@@ -1,0 +1,30 @@
+\chapter{Discussion}
+\label{ch:discussion}
+%% -----------------------------------------------------------------------------
+%% -----------------------------------------------------------------------------
+\section{Conclusions}
+ANNs are a promising tool for future catalyst development, particularly when considering well-studied reactions with ample published data, such as the water-gas shift reaction. As demonstrated, ANNs are capable of merging diverse data from many sources into a single mathematical model capable of providing catalytic insight. The model developed in this work is capable of predicting catalysts which follow scaling relations and identifying catalysts that do not. Furthermore, the process of rigorously optimizing an ANN is a valuable approach to analyzing readily available catalytic data. Specifically, identifying appropriate attributes and evaluating their relative importance via a sensitivity analysis leads to improved understanding of underlying catalytic properties. 
+
+Because ANNs rely on an initial, well-characterized training data set, they cannot serve as an independent platform for catalyst development. However, used in conjunction with modern computational techniques and cutting-edge experimental methods, ANNs have the potential to bridge these areas of research and guide intelligent catalyst design. ANNs can be applied in catalytic research to (1) discern the underlying chemical properties that drive catalytic activity, (2) to predicting optimum catalyst compositions according to the developed scaling relation and (3) given experimental data, to identify catalytic materials capable of breaking the scaling relation. 
+%% -----------------------------------------------------------------------------
+%% -----------------------------------------------------------------------------
+\section{Limitations}
+A developed ANN is limited by the quality of training data and validity of attribute selection. The model's predictions will reflect any biases in the training data. Therefore, rigorous data evaluation and cleaning, as done here with the $\beta$ approach, is critical to ensuring model validity. Additionally, the ANN is trained by minimizing an error function that compares an expected value to the predicted value. As a result, the trained model will incorporate some bias based on the distribution of the training data. If domain coverage is sparse in one region and dense in another, the predictions for inputs lying in the dense area will have less error than those in the sparse area. Therefore, while this work uses the overall MSE and the coefficient of determination to evaluate model performance, sparse areas of the domain will result in poorer predictions than indicated by these statistical analysis. 
+
+Furthermore, rigorous model development requires fundamental catalytic knowledge to hypothesize valuable attribute selection. Once attributes are hypothesized, a trial-and-error process remains for evaluating the most meaningful descriptors. Thus, the scientific process is not something that can be abandoned with ML techniques. Additionally, identifying attributes that result in adequate performance does not necessarily indicate a causal relationship. Rather, an attribute may correlate with the output without being causally related. Therefore, blindly accepting attributes does not necessarily yield physical insight about the catalytic system.
+
+Finally, previously published work merging experimental results and ANNs has been in optimizing a catalyst or reaction conditions to promote a desired outcome. However, viewing the ANN as a complex scaling relation, these optimizations and predictions are limited to catalysts that fall on the scaling relation. Realistically, the most significant catalytic breakthroughs often occur when scaling relations are broken. Therefore, solely exploring catalysts which obey the ANN-predicted scaling relation may have limited value. 
+%% -----------------------------------------------------------------------------
+%% -----------------------------------------------------------------------------
+\section{Future Work}
+The approaches and results contained in this report could be further fortified by pursuing the future work proposed here. The attribute identification and analysis was relatively crude and not mathematically substantiated. Alternatively, clustering techniques could be used to identify the attributes prior to and independent of ANN development. In addition, identifying a relationship to allow inclusion of mixed supports in this model would add value by expanding the domain. Similarly, identifying attributes that allowed successful integration of the \ce{Au/CeO2} and \ce{Pt/CeO2} data would also be useful. This would reintroduce a significant number of data points and may also have implications for explaining the unique mechanism observed from these catalysts. Along with improving attribute identification, a more rigorous sensitivity analysis could be performed. This may lead to additional insights on the relative importance of given attributes.
+
+It is worth acknowledging that the current model is only capable of identifying whether an instance breaks or follows the scaling relation. In cases where the scaling relation is not followed, the ANN is unable to identify how or why the prediction was wrong. Therefore, a particularly valuable future direction may be in determining a means of identifying where the divergence from the scaling relation occurred. Successfully identifying the `breaking point' of a scaling relation may provide insight regarding mechanistic differences between catalysts. 
+
+
+
+
+
+
+
+

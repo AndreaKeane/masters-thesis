@@ -1,0 +1,79 @@
+
+	\begin{tikzpicture}[
+			> = stealth, % arrow head style
+			shorten > = 1pt, % don't touch arrow head to node
+			auto,
+			align=center,
+			semithick, % line style
+			node distance = 1mm and 2cm
+		][h]
+
+		\definecolor{awesome-grey}{RGB}{211,211,211}
+		\definecolor{fantastic-grey}{RGB}{169,169,169}
+
+		\tikzstyle{every state}=[draw = black, thick, fill = white, minimum size = 9mm]
+		\tikzstyle{layer1}=[state,fill = awesome-grey]
+		\tikzstyle{layer2}=[state,fill = fantastic-grey]
+		\tikzstyle{invisible-border}=[state, draw = white, fill = white, minimum size = 1mm]
+		\tikzstyle{inputs}=[rectangle, draw, text centered, minimum width=1.5em, minimum height=25em]%rotate around={90:(0,0)}
+
+		% Input node is the root node positionally
+		\node[inputs] (inputs) {\rotatebox{90}{Inputs}};
+
+	% ----------------------------------------------------------------------
+	% Layer 1
+	% ----------------------------------------------------------------------
+		% This node hides in between the Input box and layer 1 nodes for correct spacing...
+		\node[invisible-border, right=0cm and 1mm of inputs] (spacing-anchor) {};
+
+		% Nodes {x_11,x_12,x_13} are above right invisible-border
+		\node[layer1, above right= of spacing-anchor] (x13) {$x_{1,3}$};
+		\node[layer1, above= of x13] (x12) {$x_{1,2}$};
+		\node[layer1, above= of x12, label=above:Layer 1] (x11) {$x_{1,1}$};
+
+		% Nodes {x_14,x_15,x_16} are below invisible-border
+		\node[layer1, below right= of spacing-anchor] (x14) {$x_{1,4}$};
+		\node[layer1, below= of x14] (x15) {$x_{1,5}$};
+		\node[layer1, below= of x15] (x16) {$x_{1,6}$};
+
+		% Edges from input box -> {x_11,x_12,x_13,x_14,x_15,x_16}
+		\path[->] (inputs) edge node {} (x11);
+		\path[->] (inputs) edge node {} (x12);
+		\path[->] (inputs) edge node {} (x13);
+		\path[->] (inputs) edge node {} (x14);
+		\path[->] (inputs) edge node {} (x15);
+		\path[->] (inputs) edge node {} (x16);
+
+	% ----------------------------------------------------------------------
+	% Layer 2
+	% ----------------------------------------------------------------------
+		% Nodes {x_21,x_22} are above and below respectively
+		\node[layer2, right= of x12, label=above:Layer 2] (x21) {$x_{2,1}$};
+		\node[layer2, right= of x15] (x22) {$x_{2,2}$};
+
+		% Edges from {x_11,x_12,x_13,x_14,x_15,x_16} -> {x_21,x_22}
+		\path[->] (x11) edge node {} (x21);
+		\path[->] (x11) edge node {} (x22);
+		\path[->] (x12) edge node {} (x21);
+		\path[->] (x12) edge node {} (x22);
+		\path[->] (x13) edge node {} (x21);
+		\path[->] (x13) edge node {} (x22);
+		\path[->] (x14) edge node {} (x21);
+		\path[->] (x14) edge node {} (x22);
+		\path[->] (x15) edge node {} (x21);
+		\path[->] (x15) edge node {} (x22);
+		\path[->] (x16) edge node {} (x21);
+		\path[->] (x16) edge node {} (x22);
+
+	% ----------------------------------------------------------------------
+	% Layer 3
+	% ----------------------------------------------------------------------
+		% Y and output
+		\node[state, right=0cm and 7.5cm of spacing-anchor] (y) {$y$};
+		\node[invisible-border, right= of y] (o) {Output};
+
+		\path[->] (x21) edge node {} (y);
+		\path[->] (x22) edge node {} (y);
+		\path[->] (y) edge node {} (o);
+
+	\end{tikzpicture}
